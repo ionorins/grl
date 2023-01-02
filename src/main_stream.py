@@ -16,6 +16,7 @@ from torch.autograd import Variable
 
 import utils
 from models.graph_sage import GraphSAGE
+# from models.gnn import GNN as GraphSAGE
 from models.ewc import EWC
 from handlers.stream_data_handler import StreamDataHandler
 from handlers.model_handler import ModelHandler
@@ -70,6 +71,7 @@ def run(args, t):
 
     if args.new_ratio > 0.0 and t > 0:
         data.train_new_nodes_list = detection.detect(data, t, args)
+        print(f'train_new_nodes_list: {data.train_new_nodes_list}')
         data.train_nodes = list(set(data.train_nodes + data.train_new_nodes_list)) if len(data.train_new_nodes_list) > 0 else data.train_nodes
     else:
         detect_time = 0
@@ -93,6 +95,7 @@ def run(args, t):
             memory_h = memory_handler.load('M', args)
             important_nodes_list = memory_h.memory
             data.train_nodes = list(set(data.train_nodes + important_nodes_list))
+            # print(f'important_nodes_list: {important_nodes_list}')
             logging.info('Important Data Size: ' + str(len(important_nodes_list)) + ' / ' + str(len(data.train_nodes)))
         else:
             important_nodes_list = data.train_old_nodes_list

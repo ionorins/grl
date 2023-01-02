@@ -74,6 +74,13 @@ class StreamDataHandler(DataHandler):
         self.train_cha_nodes_list, self.train_old_nodes_list = list(self.train_cha_nodes_list), list(self.train_old_nodes_list)
         self.valid_cha_nodes_list, self.valid_old_nodes_list = list(self.valid_cha_nodes_list), list(self.valid_old_nodes_list)
         
+        # print(f'train_nodes: {self.train_nodes}')
+        # print(f'valid_nodes: {self.valid_nodes}')
+        # print(f'train_cha_nodes_list: {self.train_cha_nodes_list}')
+        # print(f'train_old_nodes_list: {self.train_old_nodes_list}')
+        # print(f'valid_cha_nodes_list: {self.valid_cha_nodes_list}')
+        # print(f'valid_old_nodes_list: {self.valid_old_nodes_list}')
+
         self.train_size = len(self.train_nodes)
         self.valid_size = len(self.valid_nodes)
         self.data_size = self.train_size + self.valid_size

@@ -58,6 +58,7 @@ class EWC(nn.Module):
     def loss(self, nodes, labels):
         loss1 = self.model.loss(nodes, labels)
         loss2 = self._compute_consolidation_loss()
+        # print(f'loss1: {loss1} loss2 {loss2}')
         loss = loss1 + loss2
         return loss
 

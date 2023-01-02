@@ -10,6 +10,7 @@ import torch
 from handlers.stream_data_handler import StreamDataHandler
 from handlers.model_handler import ModelHandler
 from models.graph_sage import GraphSAGE
+# from models.gnn import GNN as GraphSAGE
 
 
 def detect(data, t, args):
@@ -48,6 +49,8 @@ def detect_bfs(data, t, args):
 
     # Calculate delta of embeddings
     delta_h = np.sum(np.abs(h_cur - h_pre), 1)
+
+    # print(f'delta: {delta_h}')
 
     # Calculate influenced nodes
     nodelist, f_matrix = bfs_plus(data, data.train_cha_nodes_list, 2)
